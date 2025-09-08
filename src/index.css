@@ -1,42 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Futuristic Portfolio Design System */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core Background & Text */
+    --background: 240 5% 98%;
+    --foreground: 240 10% 8%;
 
+    /* Card & Surface Colors */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 240 10% 8%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 240 10% 8%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Brand Colors - Futuristic Tech Theme */
+    --primary: 220 100% 60%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 220 100% 70%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 260 100% 65%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-glow: 260 100% 75%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 180 100% 50%;
+    --accent-foreground: 240 10% 8%;
+    --accent-glow: 180 100% 60%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Neural Network Inspired Colors */
+    --neural: 290 100% 70%;
+    --neural-foreground: 0 0% 100%;
+    --neural-glow: 290 100% 80%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Status Colors */
+    --success: 120 100% 40%;
+    --success-foreground: 0 0% 100%;
+    
+    --warning: 45 100% 60%;
+    --warning-foreground: 240 10% 8%;
+    
+    --destructive: 0 100% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Surface & Interaction */
+    --muted: 240 5% 95%;
+    --muted-foreground: 240 5% 40%;
 
-    --radius: 0.5rem;
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 220 100% 60%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--secondary-glow)));
+    --gradient-neural: linear-gradient(135deg, hsl(var(--neural)), hsl(var(--neural-glow)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)), hsl(var(--accent)));
+    --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+
+    /* Shadows & Effects */
+    --shadow-glow: 0 0 30px hsl(var(--primary) / 0.3);
+    --shadow-neural: 0 0 40px hsl(var(--neural) / 0.4);
+    --shadow-accent: 0 0 25px hsl(var(--accent) / 0.3);
+    --shadow-elegant: 0 10px 40px -10px hsl(var(--primary) / 0.2);
+
+    /* Animation & Transitions */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -56,41 +92,65 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Core Background & Text - Dark Mode */
+    --background: 240 10% 6%;
+    --foreground: 240 5% 95%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    /* Card & Surface Colors - Dark Mode */
+    --card: 240 8% 8%;
+    --card-foreground: 240 5% 95%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 240 8% 8%;
+    --popover-foreground: 240 5% 95%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    /* Brand Colors - Enhanced for Dark Mode */
+    --primary: 220 100% 65%;
+    --primary-foreground: 240 10% 6%;
+    --primary-glow: 220 100% 75%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 260 100% 70%;
+    --secondary-foreground: 240 10% 6%;
+    --secondary-glow: 260 100% 80%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 180 100% 55%;
+    --accent-foreground: 240 10% 6%;
+    --accent-glow: 180 100% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    /* Neural Network Inspired Colors - Dark Mode */
+    --neural: 290 100% 75%;
+    --neural-foreground: 240 10% 6%;
+    --neural-glow: 290 100% 85%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    /* Status Colors - Dark Mode */
+    --success: 120 100% 45%;
+    --success-foreground: 240 10% 6%;
+    
+    --warning: 45 100% 65%;
+    --warning-foreground: 240 10% 6%;
+    
+    --destructive: 0 100% 65%;
+    --destructive-foreground: 240 10% 6%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Surface & Interaction - Dark Mode */
+    --muted: 240 8% 12%;
+    --muted-foreground: 240 5% 60%;
+
+    --border: 240 6% 15%;
+    --input: 240 6% 15%;
+    --ring: 220 100% 65%;
+
+    /* Enhanced Gradients for Dark Mode */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--secondary-glow)));
+    --gradient-neural: linear-gradient(135deg, hsl(var(--neural)), hsl(var(--neural-glow)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)), hsl(var(--accent)));
+    --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+
+    /* Enhanced Shadows for Dark Mode */
+    --shadow-glow: 0 0 40px hsl(var(--primary) / 0.5);
+    --shadow-neural: 0 0 50px hsl(var(--neural) / 0.6);
+    --shadow-accent: 0 0 35px hsl(var(--accent) / 0.4);
+    --shadow-elegant: 0 15px 50px -15px hsl(var(--primary) / 0.3);
   }
 }
 
@@ -100,6 +160,104 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-inter;
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold;
+  }
+}
+
+@layer components {
+  /* Futuristic Glass Card Effect */
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-lg border border-border/50;
+    background: var(--gradient-glass);
+    box-shadow: var(--shadow-elegant);
+  }
+
+  /* Glowing Effects */
+  .glow-primary {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .glow-neural {
+    box-shadow: var(--shadow-neural);
+  }
+
+  .glow-accent {
+    box-shadow: var(--shadow-accent);
+  }
+
+  /* Text Gradients */
+  .text-gradient-primary {
+    background: var(--gradient-primary);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gradient-neural {
+    background: var(--gradient-neural);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Hover Animations */
+  .hover-lift {
+    transition: var(--transition-smooth);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-elegant);
+  }
+
+  .hover-scale {
+    transition: var(--transition-bounce);
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+
+  /* Floating Animation */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .float-animation {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* Neural Network Grid Background */
+  .neural-grid {
+    background-image: 
+      linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  /* Typewriter Effect */
+  @keyframes typewriter {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+
+  @keyframes blink {
+    from, to { border-color: transparent; }
+    50% { border-color: hsl(var(--primary)); }
+  }
+
+  .typewriter {
+    overflow: hidden;
+    border-right: 3px solid;
+    white-space: nowrap;
+    animation: 
+      typewriter 3s steps(40, end),
+      blink 0.75s step-end infinite;
   }
 }
