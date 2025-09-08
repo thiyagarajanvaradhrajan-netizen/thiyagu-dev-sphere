@@ -170,16 +170,51 @@
 }
 
 @layer components {
-  /* Futuristic Glass Card Effect */
+  /* Enhanced Glass Card Effect */
   .glass-card {
     @apply bg-card/80 backdrop-blur-lg border border-border/50;
     background: var(--gradient-glass);
     box-shadow: var(--shadow-elegant);
+    position: relative;
+    overflow: hidden;
   }
 
-  /* Glowing Effects */
+  .glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s;
+  }
+
+  .glass-card:hover::before {
+    left: 100%;
+  }
+
+  /* Enhanced Glowing Effects */
   .glow-primary {
     box-shadow: var(--shadow-glow);
+    position: relative;
+  }
+
+  .glow-primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: var(--gradient-primary);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: xor;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .glow-primary:hover::after {
+    opacity: 0.5;
   }
 
   .glow-neural {
@@ -190,12 +225,14 @@
     box-shadow: var(--shadow-accent);
   }
 
-  /* Text Gradients */
+  /* Enhanced Text Gradients */
   .text-gradient-primary {
     background: var(--gradient-primary);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-size: 200% 100%;
+    animation: gradient-shift 3s ease-in-out infinite;
   }
 
   .text-gradient-neural {
@@ -203,16 +240,23 @@
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-size: 200% 100%;
+    animation: gradient-shift 3s ease-in-out infinite reverse;
   }
 
-  /* Hover Animations */
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  /* Enhanced Hover Animations */
   .hover-lift {
     transition: var(--transition-smooth);
   }
 
   .hover-lift:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-elegant);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-elegant), 0 20px 40px -20px hsl(var(--primary) / 0.4);
   }
 
   .hover-scale {
@@ -223,33 +267,89 @@
     transform: scale(1.05);
   }
 
-  /* Floating Animation */
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
+  /* Magnetic Effect */
+  .magnetic {
+    transition: transform 0.3s ease;
+  }
+
+  /* Enhanced Floating Animation */
+  @keyframes float-enhanced {
+    0%, 100% { 
+      transform: translateY(0px) rotate(0deg); 
+      opacity: 0.7;
+    }
+    25% { 
+      transform: translateY(-5px) rotate(1deg); 
+      opacity: 0.8;
+    }
+    50% { 
+      transform: translateY(-15px) rotate(0deg); 
+      opacity: 1;
+    }
+    75% { 
+      transform: translateY(-5px) rotate(-1deg); 
+      opacity: 0.8;
+    }
   }
 
   .float-animation {
-    animation: float 3s ease-in-out infinite;
+    animation: float-enhanced 4s ease-in-out infinite;
   }
 
-  /* Neural Network Grid Background */
+  /* Particle Animation */
+  @keyframes particle-float {
+    0%, 100% { 
+      transform: translateY(0px) translateX(0px) scale(1);
+      opacity: 0.3;
+    }
+    25% { 
+      transform: translateY(-20px) translateX(10px) scale(1.1);
+      opacity: 0.7;
+    }
+    50% { 
+      transform: translateY(-40px) translateX(-5px) scale(1.2);
+      opacity: 1;
+    }
+    75% { 
+      transform: translateY(-20px) translateX(-10px) scale(1.1);
+      opacity: 0.7;
+    }
+  }
+
+  .particle-animation {
+    animation: particle-float 6s ease-in-out infinite;
+  }
+
+  /* Enhanced Neural Network Grid Background */
   .neural-grid {
     background-image: 
-      linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
-    background-size: 50px 50px;
+      radial-gradient(circle at 25% 25%, hsl(var(--primary) / 0.1) 2px, transparent 2px),
+      radial-gradient(circle at 75% 75%, hsl(var(--secondary) / 0.1) 2px, transparent 2px),
+      linear-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
+    background-size: 100px 100px, 100px 100px, 50px 50px, 50px 50px;
+    animation: grid-move 20s linear infinite;
   }
 
-  /* Typewriter Effect */
-  @keyframes typewriter {
+  @keyframes grid-move {
+    0% { background-position: 0 0, 0 0, 0 0, 0 0; }
+    100% { background-position: 100px 100px, -100px -100px, 50px 50px, -50px -50px; }
+  }
+
+  /* Enhanced Typewriter Effect */
+  @keyframes typewriter-enhanced {
     from { width: 0; }
     to { width: 100%; }
   }
 
-  @keyframes blink {
+  @keyframes blink-enhanced {
     from, to { border-color: transparent; }
     50% { border-color: hsl(var(--primary)); }
+  }
+
+  @keyframes text-glow {
+    0%, 100% { text-shadow: 0 0 5px hsl(var(--primary) / 0.5); }
+    50% { text-shadow: 0 0 20px hsl(var(--primary) / 0.8), 0 0 30px hsl(var(--primary) / 0.6); }
   }
 
   .typewriter {
@@ -257,7 +357,133 @@
     border-right: 3px solid;
     white-space: nowrap;
     animation: 
-      typewriter 3s steps(40, end),
-      blink 0.75s step-end infinite;
+      typewriter-enhanced 4s steps(60, end),
+      blink-enhanced 0.75s step-end infinite,
+      text-glow 2s ease-in-out infinite;
+  }
+
+  /* Scroll Progress Indicator */
+  .scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: var(--gradient-primary);
+    z-index: 100;
+    transform-origin: 0%;
+  }
+
+  /* Enhanced Button Effects */
+  .btn-magnetic {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .btn-magnetic::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+
+  .btn-magnetic:hover::before {
+    width: 300px;
+    height: 300px;
+  }
+
+  /* Loading Spinner */
+  @keyframes spin-glow {
+    0% { 
+      transform: rotate(0deg);
+      box-shadow: 0 0 5px hsl(var(--primary));
+    }
+    50% { 
+      box-shadow: 0 0 20px hsl(var(--primary)), 0 0 30px hsl(var(--primary));
+    }
+    100% { 
+      transform: rotate(360deg);
+      box-shadow: 0 0 5px hsl(var(--primary));
+    }
+  }
+
+  .loading-spinner {
+    animation: spin-glow 1s linear infinite;
+  }
+
+  /* Skill Bar Animation */
+  @keyframes skill-fill {
+    0% { width: 0%; }
+    100% { width: var(--skill-width); }
+  }
+
+  .skill-bar {
+    animation: skill-fill 2s ease-out forwards;
+  }
+
+  /* Image Reveal Effect */
+  @keyframes image-reveal {
+    0% {
+      clip-path: inset(0 100% 0 0);
+    }
+    100% {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  .image-reveal {
+    animation: image-reveal 1s ease-out forwards;
+  }
+
+  /* Text Reveal Animation */
+  @keyframes text-reveal {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .text-reveal {
+    animation: text-reveal 0.8s ease-out forwards;
+  }
+
+  /* Stagger Animation */
+  .stagger-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+  }
+
+  .stagger-item.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--gradient-primary);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--gradient-secondary);
   }
 }
